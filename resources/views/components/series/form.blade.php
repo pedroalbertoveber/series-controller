@@ -1,6 +1,6 @@
 <form action="{{ $action }}" method="POST">
   @csrf
-  @isset($name)
+  @isset($update)
     @method('PUT')
   @endisset
   <div class="mb-3">
