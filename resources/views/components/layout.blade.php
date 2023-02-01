@@ -19,6 +19,11 @@
       </ul>
     </div>
   @endif
+  @isset($message)      
+    <div class="alert alert-success">
+      {{ $message }}
+    </div>
+  @endisset
   {{ $slot }}
 </body>
 </html>
