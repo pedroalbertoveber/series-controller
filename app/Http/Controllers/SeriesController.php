@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Authenticator;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
 use App\Repositories\SeriesRepository;
@@ -12,8 +13,11 @@ class SeriesController extends Controller
 {
     public function __construct(private SeriesRepository $repository)
     {
+        $this->middleware(Authenticator::class)->except('index');
     }
+
     public function index(Request $request) {
+
         $series = Series::with(['seasons'])->get();
         $message = $request->session()->get('message.success');
 
